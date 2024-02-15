@@ -3,7 +3,7 @@
 Name        : lab5_exe_C.html
 Assignment  : Lab 5, Exercise C
 Author(s)   : Keerthana Krishnan, Raghav Adlakha 
-Submission  : Februuary 14, 2024 
+Submission  : February 14, 2024 
 Description : DOM Elements.
 =========================================================
 -->
@@ -202,6 +202,7 @@ Description : DOM Elements.
                     <li><a href="#">W3School</a></li>
                     <li><a href="#">AWS</a></li>
                 </ul>
+				
             </aside>
 		</div>
 		<footer>
@@ -210,33 +211,61 @@ Description : DOM Elements.
 		<script>
 			document.addEventListener('DOMContentLoaded', function afterRender() {
 				// Task 1: Set the text content of all elements with the class 'companyName' and remove their border
-
+				var companyNames = document.querySelectorAll('.companyName');
+				companyNames.forEach(function (companyName) {
+					companyName.textContent = 'Keerthana and Raghav';
+					companyName.style.border = 'none';
+				});
 
 				// Task 2: Change the background color of the navigation bar
-				
+				var nav = document.querySelector('nav');
+				nav.style.backgroundColor = 'lightpink';
 
 				// Task 3: Hide the section titled 'What is full-stack?'
-
+				var fullStackSection = document.querySelector('article');
+				fullStackSection.style.display = 'none';
 
 				// Task 4: Create a new <p> element and append it to the 'About Us' section
-
+				var aboutUsSection = document.querySelector('section h2:only-of-type');
+				var newParagraph = document.createElement('p');
+				newParagraph.textContent = 'This is a new paragraph added dynamically.';
+				aboutUsSection.parentNode.insertBefore(newParagraph, aboutUsSection.nextSibling);
 
 				// Task 5: Add placeholders to input elements based on their corresponding label IDs
-
+				var labels = document.querySelectorAll('label');
+				labels.forEach(function (label) {
+					var inputId = label.getAttribute('for');
+					var inputElement = document.getElementById(inputId);
+					if (inputElement) {
+						inputElement.placeholder = label.textContent;
+					}
+				});
 
 				// Task 6: Set the src attribute of the image
-
+				var companyLogo = document.querySelector('img');
+				companyLogo.src = 'logo.svg';
 
 				// Task 7: Add a new item in the navigation menu
-
+				var newNavItem = document.createElement('li');
+				newNavItem.innerHTML = '<a href="#">New Item</a>';
+				document.querySelector('nav ul').appendChild(newNavItem);
 
 				// Task 8: Change the submit button text upon clicking and make it disabled
-
+				var submitButton = document.querySelector('input[type="button"]');
+				submitButton.addEventListener('click', function () {
+					submitButton.value = 'Submitting...';
+					submitButton.disabled = true;
+				});
 
 				// Task 9: Change the text color of each item in the 'Related Links' to green
-
+				var relatedLinks = document.querySelectorAll('.container aside ul li a');
+				relatedLinks.forEach(function (link) {
+					link.style.color = 'green';
+				});
 
 				// Task 10: Add a red solid border to the footer
+				var footer = document.querySelector('footer');
+				footer.style.border = '2px solid red';
 			});
 		</script>
 	</body>
