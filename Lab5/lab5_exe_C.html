@@ -23,12 +23,18 @@ Description : DOM Elements.
 				flex-direction: column;
 				min-height: 100vh; /* Ensures the body takes up at least the viewport height */
 			}
-			header,
+			header {
+				background-color: #333;
+				color: white;
+				text-align: center;
+				padding: 1em 0;
+			}
 			footer {
 				background-color: #333;
 				color: white;
 				text-align: center;
 				padding: 1em 0;
+				border: 2px solid red;
 			}
 			.container {
 				width: 90%;
@@ -209,63 +215,63 @@ Description : DOM Elements.
 		</footer>
 		<script>
 			document.addEventListener('DOMContentLoaded', function afterRender() {
-				// Task 1: Set the text content of all elements with the class 'companyName' and remove their border
-				const companyNameElements = document.querySelectorAll('.companyName');
-    			companyNameElements.forEach(element => {
-       				element.textContent = 'Keerthana and Raghav'; 
-					element.style.border = 'none';
+    			// Task 1: Set the text content of all elements with the class 'companyName' and remove their border
+    				let companyNameElements = document.querySelectorAll('.companyName');
+    				companyNameElements.forEach(element => {
+       				element.textContent = 'Keerthana and Raghav';
+        			element.style.border = 'none';
+    				});
+
+   				 // Task 2: Change the background color of the navigation bar
+    			let navBar = document.querySelector('nav');
+    			navBar.style.backgroundColor = 'lightblue';
+
+    			// Task 3: Hide the section titled 'What is full-stack?'
+    			let fullStackSection = document.querySelector('article');
+    			fullStackSection.style.display = 'none';
+
+    			// Task 4: Create a new <p> element and append it to the 'About Us' section
+    			let aboutUsSection = document.querySelector('section:nth-of-type(1)');
+    			let newParagraph = document.createElement('p');
+    			newParagraph.textContent = 'This is a new paragraph.';
+				newParagraph.style.color = 'red';
+    			aboutUsSection.appendChild(newParagraph);
+
+    			// Task 5: Add placeholders to input elements based on their corresponding label IDs
+    			let labels = document.querySelectorAll('label');
+    			labels.forEach(label => {
+        		let inputId = label.getAttribute('for');
+        		let inputElement = document.getElementById(inputId);
+        		inputElement.placeholder = `Enter your ${label.textContent.toLowerCase()}`;
     			});
 
-				// Task 2: Change the background color of the navigation bar
-				var nav = document.querySelector('nav3');
-				nav.style.backgroundColor = 'lightpink';
+    			// Task 6: Set the src attribute of the image
+    			let companyLogo = document.querySelector('img');
+    			companyLogo.src = 'logo.svg'; 
 
-				// Task 3: Hide the section titled 'What is full-stack?'
-				var fullStackSection = document.querySelector('article');
-				fullStackSection.style.display = 'none';
+    			// Task 7: Add a new item in the navigation menu
+    			let newNavItem = document.createElement('li');
+   		 		newNavItem.innerHTML = '<a href="#">New Item</a>';
+    			document.querySelector('nav ul').appendChild(newNavItem);
 
-				// Task 4: Create a new <p> element and append it to the 'About Us' section
-				var aboutUsSection = document.querySelector('section h2:only-of-type');
-				var newParagraph = document.createElement('p');
-				newParagraph.textContent = 'This is a new paragraph added dynamically.';
-				aboutUsSection.parentNode.insertBefore(newParagraph, aboutUsSection.nextSibling);
+    			// Task 8: Change the submit button text upon clicking and make it disabled
+    			let submitButton = document.querySelector('input[type="button"]');
+    			submitButton.addEventListener('click', function() {
+       			submitButton.value = 'Submitted';
+        		submitButton.disabled = true;
+   				});
 
-				// Task 5: Add placeholders to input elements based on their corresponding label IDs
-				var labels = document.querySelectorAll('label');
-				labels.forEach(function (label) {
-					var inputId = label.getAttribute('for');
-					var inputElement = document.getElementById(inputId);
-					if (inputElement) {
-						inputElement.placeholder = label.textContent;
-					}
+    			// Task 9: Change the text color of each item in the 'Related Links' to green
+    			let relatedLinks = document.querySelectorAll('aside ul li');
+    			relatedLinks.forEach(link => {
+        		link.style.color = 'green';
+    			});
+
+    			// Task 10: Add a red solid border to the footer
+    			let footer = document.querySelector('footer');
+    			footer.style.border = '2px solid red';
 				});
 
-				// Task 6: Set the src attribute of the image
-				var companyLogo = document.querySelector('img[alt="Company logo"]');
-				companyLogo.src = 'logo.svg'; 
-
-				// Task 7: Add a new item in the navigation menu
-				var newNavItem = document.createElement('li');
-				newNavItem.innerHTML = '<a href="#">New Item</a>';
-				document.querySelector('nav ul').appendChild(newNavItem);
-
-				// Task 8: Change the submit button text upon clicking and make it disabled
-				var submitButton = document.querySelector('input[type="button"]');
-				submitButton.addEventListener('click', function () {
-					submitButton.value = 'Disabled?';
-					submitButton.disabled = true;
-				});
-
-				// Task 9: Change the text color of each item in the 'Related Links' to green
-				var relatedLinks = document.querySelectorAll('.container aside ul li a');
-				relatedLinks.forEach(function (link) {
-					link.style.color = 'green';
-				});
-
-				// Task 10: Add a red solid border to the footer
-				var footer = document.querySelector('footer');
-				footer.style.border = '2px solid red';
-			});
 		</script>
 	</body>
 </html>
