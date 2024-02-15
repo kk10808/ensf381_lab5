@@ -29,7 +29,6 @@ Description : DOM Elements.
 				color: white;
 				text-align: center;
 				padding: 1em 0;
-        		border: 2px solid red;
 			}
 			.container {
 				width: 90%;
@@ -211,14 +210,14 @@ Description : DOM Elements.
 		<script>
 			document.addEventListener('DOMContentLoaded', function afterRender() {
 				// Task 1: Set the text content of all elements with the class 'companyName' and remove their border
-				var companyNames = document.querySelectorAll('.companyName');
-				companyNames.forEach(function (companyName) {
-					companyName.textContent = 'Keerthana and Raghav';
-					companyName.style.border = 'none';
-				});
+				const companyNameElements = document.querySelectorAll('.companyName');
+    			companyNameElements.forEach(element => {
+       				element.textContent = 'Keerthana and Raghav'; 
+					element.style.border = 'none';
+    			});
 
 				// Task 2: Change the background color of the navigation bar
-				var nav = document.querySelector('nav');
+				var nav = document.querySelector('nav3');
 				nav.style.backgroundColor = 'lightpink';
 
 				// Task 3: Hide the section titled 'What is full-stack?'
@@ -242,8 +241,8 @@ Description : DOM Elements.
 				});
 
 				// Task 6: Set the src attribute of the image
-				var companyLogo = document.querySelector('img');
-				companyLogo.src = 'logo.svg';
+				var companyLogo = document.querySelector('img[alt="Company logo"]');
+				companyLogo.src = 'logo.svg'; 
 
 				// Task 7: Add a new item in the navigation menu
 				var newNavItem = document.createElement('li');
@@ -253,7 +252,7 @@ Description : DOM Elements.
 				// Task 8: Change the submit button text upon clicking and make it disabled
 				var submitButton = document.querySelector('input[type="button"]');
 				submitButton.addEventListener('click', function () {
-					submitButton.value = 'Submitting...';
+					submitButton.value = 'Disabled?';
 					submitButton.disabled = true;
 				});
 
