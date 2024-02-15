@@ -216,11 +216,11 @@ Description : DOM Elements.
 		<script>
 			document.addEventListener('DOMContentLoaded', function afterRender() {
     			// Task 1: Set the text content of all elements with the class 'companyName' and remove their border
-    				let companyNameElements = document.querySelectorAll('.companyName');
-    				companyNameElements.forEach(element => {
-       				element.textContent = 'Keerthana and Raghav';
-        			element.style.border = 'none';
-    				});
+    			let companyNameElements = document.querySelectorAll('.companyName');
+    			companyNameElements.forEach(element => {
+       			element.textContent = 'Keerthana and Raghav';
+        		element.style.border = 'none';
+    			});
 
    				 // Task 2: Change the background color of the navigation bar
     			let navBar = document.querySelector('nav');
@@ -231,23 +231,26 @@ Description : DOM Elements.
     			fullStackSection.style.display = 'none';
 
     			// Task 4: Create a new <p> element and append it to the 'About Us' section
-    			let aboutUsSection = document.querySelector('section:nth-of-type(1)');
-    			let newParagraph = document.createElement('p');
-    			newParagraph.textContent = 'This is a new paragraph.';
-				newParagraph.style.color = 'red';
-    			aboutUsSection.appendChild(newParagraph);
+				var pText = document.createElement('p');
+				pText.style.color = 'red';
+				pText.textContent = "This is a random paragraph!"
+				var sec = document.querySelector('section');
+				sec.appendChild(pText);
+
 
     			// Task 5: Add placeholders to input elements based on their corresponding label IDs
-    			let labels = document.querySelectorAll('label');
-    			labels.forEach(label => {
-        		let inputId = label.getAttribute('for');
-        		let inputElement = document.getElementById(inputId);
-        		inputElement.placeholder = `Enter your ${label.textContent.toLowerCase()}`;
-    			});
+				var inputs = document.querySelectorAll('input, textarea');
+				for(var i = 0; i < inputs.length; i++) {
+					var label = inputs[i].getAttribute('id');
+					if(label){
+						inputs[i].placeholder = label[0].toUpperCase() + label.substring(1);
+					}
+				}
 
     			// Task 6: Set the src attribute of the image
-    			let companyLogo = document.querySelector('img');
-    			companyLogo.src = 'logo.svg'; 
+				var image1 = document.querySelector('img');
+				image1.src = './images/example.svg';
+
 
     			// Task 7: Add a new item in the navigation menu
     			let newNavItem = document.createElement('li');
@@ -262,10 +265,10 @@ Description : DOM Elements.
    				});
 
     			// Task 9: Change the text color of each item in the 'Related Links' to green
-    			let relatedLinks = document.querySelectorAll('aside ul li');
-    			relatedLinks.forEach(link => {
-        		link.style.color = 'green';
-    			});
+				var relatedLinks = document.querySelectorAll('aside a');
+				for(var i = 0; i < relatedLinks.length; i++){
+					relatedLinks[i].style.color = 'green';
+				}
 
     			// Task 10: Add a red solid border to the footer
     			let footer = document.querySelector('footer');
